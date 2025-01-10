@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MtBumper
+  - MtFlipper
   layers:
   - Default
   - TransparentFX
@@ -21,11 +23,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - MtLayer1
+  - MtLayer2
+  - MtLayer3
+  - MtLayer4
+  - MtLayer5
   - 
   - 
   - 
