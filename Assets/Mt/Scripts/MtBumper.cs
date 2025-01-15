@@ -15,7 +15,7 @@ public class MtBumper : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("MtBall"))
         {
             // ボールを跳ね返す
             Vector3 direction = collision.contacts[0].point - transform.position;

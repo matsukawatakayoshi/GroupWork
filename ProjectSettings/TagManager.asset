@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MtBumper
   - MtFlipper
+  - MtBall
   layers:
   - Default
   - TransparentFX
