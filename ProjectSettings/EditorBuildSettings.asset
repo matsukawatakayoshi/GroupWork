@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/3DSample.unity
     guid: 82cc6fdd975509a4d971f64a0f6089d9
   - enabled: 1
-    path: Assets/Mt/Scenes/MtPiballMain.unity
+    path: Assets/Group3/Mt/Scenes/MtPinballMain.unity
     guid: d3b01b79352b4cb4d80a4809fb0b2b10
   m_configObjects: {}

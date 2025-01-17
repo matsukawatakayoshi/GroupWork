@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class MtScoreManager : MonoBehaviour
+
+public class MtScoreManagerNew : MonoBehaviour
 {
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
     private int currentScore = 0;
 
     public void AddScore(int points)
@@ -15,5 +17,7 @@ public class MtScoreManager : MonoBehaviour
         {
             scoreText.text = "Score: " + currentScore.ToString();
         }
+        //Debug.Log($"Score added: {points}, Current Score: {currentScore}");
+
     }
 }

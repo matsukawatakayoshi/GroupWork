@@ -7,6 +7,7 @@ public class MtPlungerController : MonoBehaviour
     public float maxPullDistance = 1.0f;    // プランジャーを引ける最大距離
     public float maxForce = 5000f;          // 最大打ち出し力
     public KeyCode launchKey = KeyCode.Space; // 発射キー
+    public float springForce = 10000f;
 
     private float pullDistance = 0f;         // 現在の引き具合
     private bool isPulling = false;          // 引いているか
@@ -17,10 +18,23 @@ public class MtPlungerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         startPosition = transform.position;
+
+        if (rb != null)
+        {
+            rb.mass = 1f;
+            rb.drag = 0.1f;
+            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezeRotation |
+                           RigidbodyConstraints.FreezePositionX |
+                           RigidbodyConstraints.FreezePositionY;
+        }
     }
 
     void Update()
     {
+        if (MtGameManager.gameState != "playing") return;
+
+
         if (Input.GetKey(launchKey))
         {
             // スペースキーを押している間、プランジャーを引く
@@ -32,14 +46,7 @@ public class MtPlungerController : MonoBehaviour
         {
             // キーを離したら発射
             isPulling = false;
-            Launch();
-        }
-
-        // プランジャーをゆっくり元の位置に戻す
-        if (!isPulling && pullDistance > 0)
-        {
-            pullDistance = Mathf.Max(0, pullDistance - Time.deltaTime * 2);
-            UpdatePlungerPosition();
+            Release();
         }
     }
 
@@ -51,21 +58,46 @@ public class MtPlungerController : MonoBehaviour
         transform.position = newPosition;
     }
 
-    void Launch()
+    void Release()
     {
-        // プランジャー周辺のボールを検出
+        // ばね力による急速な戻り
+        if (rb != null)
+        {
+            // 引いた距離に応じてばね力を計算
+            float force = (pullDistance / maxPullDistance) * springForce;
+            rb.AddForce(Vector3.forward * force, ForceMode.Impulse);
+        }
+
+        // ボールを打ち出す
         Collider[] colliders = Physics.OverlapSphere(transform.position, 0.5f);
         foreach (Collider col in colliders)
         {
-            if (col.CompareTag("Ball"))
+            if (col.CompareTag("MtBall"))
             {
                 Rigidbody ballRb = col.GetComponent<Rigidbody>();
                 if (ballRb != null)
                 {
-                    // 引いた距離に応じた力でボールを打ち出す
-                    float force = (pullDistance / maxPullDistance) * maxForce;
+                    // 引いた距離に基づいて力を計算（二次関数的に増加）
+                    float force = (pullDistance / maxPullDistance) *
+                                (pullDistance / maxPullDistance) * maxForce;
                     ballRb.AddForce(Vector3.forward * force, ForceMode.Impulse);
                 }
+            }
+        }
+
+        pullDistance = 0f;
+    }
+    void FixedUpdate()
+    {
+        if (!isPulling && rb != null)
+        {
+            // プランジャーが startPosition より前に行きすぎないように制限
+            if (transform.position.z > startPosition.z)
+            {
+                Vector3 pos = transform.position;
+                pos.z = startPosition.z;
+                transform.position = pos;
+                rb.velocity = Vector3.zero;
             }
         }
     }

@@ -6,11 +6,11 @@ public class MtBumper : MonoBehaviour
 {
     public float bounceForce = 1000f;
     public int scoreValue = 100;
-    private MtScoreManager scoreManager;
+    private MtScoreManagerNew scoreManager;
 
     void Start()
     {
-        scoreManager = FindObjectOfType<MtScoreManager>();
+        scoreManager = FindObjectOfType<MtScoreManagerNew>();
     }
 
     void OnCollisionEnter(Collision collision)

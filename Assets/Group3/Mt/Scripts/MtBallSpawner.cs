@@ -12,11 +12,14 @@ public class MtBallSpawner : MonoBehaviour
 
     void Start()
     {
+
         SpawnNewBall();
     }
 
     void Update()
     {
+        if (MtGameManager.gameState != "playing") return;
+
         // Rキーでボールを再生成
         if (Input.GetKeyDown(spawnKey))
         {

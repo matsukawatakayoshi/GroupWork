@@ -23,6 +23,8 @@ public class MtFlipperController : MonoBehaviour
 
     void Update()
     {
+        if (MtGameManager.gameState != "playing") return;
+
         JointSpring spring = hinge.spring;
         spring.targetPosition = Input.GetKey(inputKey) ? pressedPosition : restPosition;
         hinge.spring = spring;
