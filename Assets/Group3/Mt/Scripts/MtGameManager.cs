@@ -15,6 +15,8 @@ public class MtGameManager : MonoBehaviour
     private Button exitButton;
     [SerializeField]
     private Button xButton;
+    [SerializeField]
+    private Button rButton;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +36,18 @@ public class MtGameManager : MonoBehaviour
             exitButton.gameObject.SetActive(false);
         }
 
+        if (rButton != null)
+        {
+            rButton.onClick.AddListener(RestartGame);
+        }
+
+
         TMP_Text textComponent = statusText.GetComponent<TMP_Text>();
         if (textComponent != null)
         {
             textComponent.text = "START!!";
         }
+
 
         gameState = "playing";
         // 時間差でstatusTextを非表示
