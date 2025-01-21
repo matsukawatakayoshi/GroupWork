@@ -107,3 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceForce: 1000
   scoreValue: 100
+  intensity: 0.7
