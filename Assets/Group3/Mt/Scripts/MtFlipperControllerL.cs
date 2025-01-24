@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
+public class MtFlipperControllerL : MonoBehaviour
 {
+    
     public float restPosition = 0f;
     public float pressedPosition = 45f;
     public float hitStrength = 10000f;
@@ -38,7 +39,7 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
 
         if (flipperButtonDown != null)
         {
-            var flipperButtonDown = GameObject.Find("MtRightFlipperButton").GetComponent<Button>();
+            var flipperButtonDown = GameObject.Find("MtLeftFlipperButton").GetComponent<Button>();
             //flipperButtonDown.onClick.AddListener(OnPointerDown);
             flipperButtonDown.onClick.AddListener(() => { isButtonPressed = !isButtonPressed; });
         }
@@ -74,10 +75,10 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
     {
         isButtonPressed = false;
     }
-    
+
     public void Tekito()
     {
 
     }
-   
+
 }

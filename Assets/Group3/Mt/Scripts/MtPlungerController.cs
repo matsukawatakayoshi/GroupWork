@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MtPlungerController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class MtPlungerController : MonoBehaviour
     private Rigidbody rb;                   // プランジャーのRigidbody
 
     [SerializeField] AudioSource PlungerSound;
+
+    [SerializeField] Button PlungerButton;
 
 
     void Start()

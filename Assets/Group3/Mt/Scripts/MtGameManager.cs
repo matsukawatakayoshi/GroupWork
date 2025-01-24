@@ -29,12 +29,12 @@ public class MtGameManager : MonoBehaviour
     {
         if (rButton != null )
         {
-            rButton.onClick.AddListener(ChangeScene);//<<<ボタン前のシーンへ
+            rButton.onClick.AddListener(ChangeScene);// <<<ボタン前のシーンへ
         }
 
         if (restartButton != null)
         {
-            restartButton.gameObject.SetActive(false);
+            restartButton.gameObject.SetActive(false);// リスタートボタンを消す
         }
 
         if (exitButton != null)
@@ -42,7 +42,7 @@ public class MtGameManager : MonoBehaviour
             exitButton.gameObject.SetActive(false);
         }
 
-        if (pButton != null) // Xボタン(リスタート←ポーズに変更予定）
+        if (pButton != null) // ポーズに変更予定
         {
             pButton.onClick.AddListener(PauseButton);
         }
