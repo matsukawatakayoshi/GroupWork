@@ -276,7 +276,7 @@ MonoBehaviour:
   launchKey: 32
   springForce: 500
   PlungerSound: {fileID: 0}
-  PlungerButton: {fileID: 0}
+  plungerButton: {fileID: 1123779907}
 --- !u!1 &71699825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   launchKey: 32
   springForce: 0
   PlungerSound: {fileID: 339324991}
-  PlungerButton: {fileID: 0}
+  plungerButton: {fileID: 0}
 --- !u!54 &339324985
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2074,7 +2074,7 @@ MonoBehaviour:
   launchKey: 32
   springForce: 0
   PlungerSound: {fileID: 0}
-  PlungerButton: {fileID: 0}
+  plungerButton: {fileID: 1123779907}
 --- !u!136 &339324988
 CapsuleCollider:
   m_ObjectHideFlags: 0
