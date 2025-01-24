@@ -762,7 +762,7 @@ PrefabInstance:
       addedObject: {fileID: 2042011217}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2042011216}
+      addedObject: {fileID: 2042011227}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2042011221}
@@ -775,25 +775,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
   m_PrefabInstance: {fileID: 2051470401}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &124187426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124187425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb54fca009160d4aa08b2a0e88c3ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restPosition: 0
-  pressedPosition: 45
-  hitStrength: 10000
-  flipperDamper: 150
-  inputKey: 100
-  isPressed: 0
-  FlipperSound: {fileID: 124187436}
 --- !u!59 &124187427
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -982,6 +963,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &124187442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124187425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb54fca009160d4aa08b2a0e88c3ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restPosition: 0
+  pressedPosition: 45
+  hitStrength: 10000
+  flipperDamper: 150
+  inputKey: 100
+  isPressed: 0
+  isLeftFlipper: 0
+  FlipperSound: {fileID: 124187436}
 --- !u!4 &142925383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7873315413462755445, guid: 3a354ba0f059e704996050484dc8e179, type: 3}
@@ -1532,6 +1533,7 @@ GameObject:
   - component: {fileID: 317578000}
   - component: {fileID: 317577999}
   - component: {fileID: 317577998}
+  - component: {fileID: 317578001}
   m_Layer: 5
   m_Name: MtRightFlipperButton
   m_TagString: Untagged
@@ -1602,31 +1604,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 317577999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 124187426}
-        m_TargetAssemblyTypeName: MtFlipperController, Assembly-CSharp
-        m_MethodName: FlipperPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 124187426}
-        m_TargetAssemblyTypeName: MtFlipperController, Assembly-CSharp
-        m_MethodName: FlipperRelease
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
+      m_Calls: []
 --- !u!114 &317577999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,6 +1643,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317577996}
   m_CullTransparentMesh: 1
+--- !u!114 &317578001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317577996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &335931810
 GameObject:
   m_ObjectHideFlags: 0
@@ -6042,25 +6033,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
   m_PrefabInstance: {fileID: 123377518}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2042011216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042011213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb54fca009160d4aa08b2a0e88c3ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restPosition: 0
-  pressedPosition: -45
-  hitStrength: 10000
-  flipperDamper: 150
-  inputKey: 97
-  isPressed: 0
-  FlipperSound: {fileID: 2042011224}
 --- !u!59 &2042011217
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -6244,6 +6216,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2042011227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042011213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb54fca009160d4aa08b2a0e88c3ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restPosition: 0
+  pressedPosition: -45
+  hitStrength: 10000
+  flipperDamper: 150
+  inputKey: 97
+  isPressed: 0
+  isLeftFlipper: 1
+  FlipperSound: {fileID: 2042011224}
 --- !u!1001 &2051470401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6324,7 +6316,7 @@ PrefabInstance:
       addedObject: {fileID: 124187427}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 124187426}
+      addedObject: {fileID: 124187442}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
       insertIndex: -1
       addedObject: {fileID: 124187433}

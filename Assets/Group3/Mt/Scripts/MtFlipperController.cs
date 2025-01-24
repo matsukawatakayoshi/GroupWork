@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-
-public class MtFlipperController : MonoBehaviour
+public class MtFlipperController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public float restPosition = 0f;
     public float pressedPosition = 45f;
@@ -14,8 +15,11 @@ public class MtFlipperController : MonoBehaviour
     private HingeJoint hinge;
 
     public bool isPressed = false;
+    public bool isLeftFlipper;
 
-   public AudioSource FlipperSound;
+    private bool isButtonPressed = false;
+
+    public AudioSource FlipperSound;
     void Start()
     {
         hinge = GetComponent<HingeJoint>();
@@ -32,7 +36,8 @@ public class MtFlipperController : MonoBehaviour
         if (MtGameManager.gameState != "playing") return;
 
         JointSpring spring = hinge.spring;
-        bool isPressing = Input.GetKey(inputKey);
+        bool isPressing = Input.GetKey(inputKey) || isButtonPressed; ;
+        //bool isPressing = Input.GetKey(inputKey) /*|| EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButton(0) && gameObject.name == "MtFlipperLeft1"*/;
 
         spring.targetPosition = isPressing ? pressedPosition : restPosition;
         hinge.spring = spring;
@@ -47,8 +52,15 @@ public class MtFlipperController : MonoBehaviour
         isPressed = isPressing;
     }
 
-    void OnButtonClick()
+    public void OnPointerDown(PointerEventData eventData)
     {
-
+        isButtonPressed = true;
     }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isButtonPressed = false;
+    }
+
+   
 }
