@@ -763,7 +763,7 @@ PrefabInstance:
       addedObject: {fileID: 2042011217}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2042011230}
+      addedObject: {fileID: 2042011233}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98ac2cb8d50932e4ebeeb385c2a47297, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2042011221}
@@ -984,7 +984,7 @@ MonoBehaviour:
   isPressed: 0
   isLeftFlipper: 0
   FlipperSound: {fileID: 124187436}
-  flipperButtonDown: {fileID: 317577998}
+  flipperButtonDownFlag: 0
 --- !u!4 &142925383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7873315413462755445, guid: 3a354ba0f059e704996050484dc8e179, type: 3}
@@ -1549,6 +1549,7 @@ GameObject:
   - component: {fileID: 308776968}
   - component: {fileID: 308776967}
   - component: {fileID: 308776966}
+  - component: {fileID: 308776969}
   m_Layer: 5
   m_Name: MtLeftFlipperButton
   m_TagString: Untagged
@@ -1658,6 +1659,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308776964}
   m_CullTransparentMesh: 1
+--- !u!114 &308776969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308776964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2042011233}
+          m_TargetAssemblyTypeName: MtFlipperController, Assembly-CSharp
+          m_MethodName: OnButtonDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2042011233}
+          m_TargetAssemblyTypeName: MtFlipperController, Assembly-CSharp
+          m_MethodName: OnButtonUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &317577996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1716,7 @@ GameObject:
   - component: {fileID: 317578000}
   - component: {fileID: 317577999}
   - component: {fileID: 317577998}
+  - component: {fileID: 317578001}
   m_Layer: 5
   m_Name: MtRightFlipperButton
   m_TagString: Untagged
@@ -1779,6 +1826,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317577996}
   m_CullTransparentMesh: 1
+--- !u!114 &317578001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317577996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 124187442}
+          m_TargetAssemblyTypeName: MtFlipperController, Assembly-CSharp
+          m_MethodName: OnButtonDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 124187442}
+          m_TargetAssemblyTypeName: MtFlipperController, Assembly-CSharp
+          m_MethodName: OnButtonUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &335931810
 GameObject:
   m_ObjectHideFlags: 0
@@ -6462,7 +6554,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2042011230
+--- !u!114 &2042011233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6471,7 +6563,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2042011213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f972e1a0c5e4ea1408cc970e7054e0ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eb54fca009160d4aa08b2a0e88c3ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   restPosition: 0
@@ -6480,9 +6572,9 @@ MonoBehaviour:
   flipperDamper: 150
   inputKey: 97
   isPressed: 0
-  isLeftFlipper: 1
+  isLeftFlipper: 0
   FlipperSound: {fileID: 2042011224}
-  flipperButtonDown: {fileID: 308776966}
+  flipperButtonDownFlag: 0
 --- !u!1001 &2051470401
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,14 +17,15 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
     public bool isPressed = false;
     public bool isLeftFlipper;
 
-    private bool isButtonPressed = false;
+    //private bool isButtonPressed = false;
 
     public AudioSource FlipperSound;
 
-    [SerializeField]
-    private Button flipperButtonDown;
     //[SerializeField]
-    //private Button flipperButtonUp;
+    //private Button flipperButtonDown;
+
+    [SerializeField]
+    private bool flipperButtonDownFlag = false;
 
     void Start()
     {
@@ -36,12 +37,11 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
 
         FlipperSound = GetComponent<AudioSource>();
 
-        if (flipperButtonDown != null)
-        {
-            /*var*/ flipperButtonDown = GameObject.Find("MtRightFlipperButton").GetComponent<Button>();
-            //flipperButtonDown.onClick.AddListener(OnPointerDown);
-            flipperButtonDown.onClick.AddListener(() => { isButtonPressed = !isButtonPressed; });
-        }
+        //if (flipperButtonDown != null)
+        //{
+        //    flipperButtonDown = GameObject.Find("MtRightFlipperButton").GetComponent<Button>();
+        //    flipperButtonDown.onClick.AddListener(() => { isButtonPressed = !isButtonPressed; });
+        //}
     }
 
     void Update()
@@ -49,13 +49,10 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
         if (MtGameManager.gameState != "playing") return;
 
         JointSpring spring = hinge.spring;
-        bool isPressing = Input.GetKey(inputKey) || isButtonPressed; ;
-        //bool isPressing = Input.GetKey(inputKey) /*|| EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButton(0) && gameObject.name == "MtFlipperLeft1"*/;
+        bool isPressing = Input.GetKey(inputKey) || flipperButtonDownFlag; ;
 
         spring.targetPosition = isPressing ? pressedPosition : restPosition;
         hinge.spring = spring;
-        //spring.targetPosition = Input.GetKey(inputKey) ? pressedPosition : restPosition;
-        //hinge.spring = spring;
 
         if (!isPressed && isPressing && FlipperSound != null)
         {
@@ -63,16 +60,26 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
         }
 
         isPressed = isPressing;
+
+        if (flipperButtonDownFlag)
+        {
+            // ボタンが押しっぱなしの状態の時にのみ「Hold」を表示する。
+            //Debug.Log("Hold");
+        }
     }
 
-    //public void OnPointerDown(/*PointerEventData eventData*/)
-    //{
-    //    isButtonPressed = true;
-    //}
+    // ボタンを押したときの処理
+    public void OnButtonDown()
+    {
+        //Debug.Log("Down");
+        flipperButtonDownFlag = true;
+    }
+    // ボタンを離したときの処理
+    public void OnButtonUp()
+    {
+        //Debug.Log("Up");
+        flipperButtonDownFlag = false;
+    }
 
-    //public void OnPointerUp(/*PointerEventData eventData*/)
-    //{
-    //    isButtonPressed = false;
-    //}
-   
+
 }
