@@ -152,6 +152,6 @@ public class MtGameManager : MonoBehaviour
     void ChangeScene()
     {
         // 指名したシーンに移る
-        SceneManager.LoadScene("MtKariTitle");
+        SceneManager.LoadScene("Title");
     }
 }

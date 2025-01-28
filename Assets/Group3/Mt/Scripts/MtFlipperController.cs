@@ -38,7 +38,7 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
 
         if (flipperButtonDown != null)
         {
-            var flipperButtonDown = GameObject.Find("MtRightFlipperButton").GetComponent<Button>();
+            /*var*/ flipperButtonDown = GameObject.Find("MtRightFlipperButton").GetComponent<Button>();
             //flipperButtonDown.onClick.AddListener(OnPointerDown);
             flipperButtonDown.onClick.AddListener(() => { isButtonPressed = !isButtonPressed; });
         }
@@ -65,19 +65,14 @@ public class MtFlipperController : MonoBehaviour/*, IPointerDownHandler, IPointe
         isPressed = isPressing;
     }
 
-    public void OnPointerDown(/*PointerEventData eventData*/)
-    {
-        isButtonPressed = true;
-    }
+    //public void OnPointerDown(/*PointerEventData eventData*/)
+    //{
+    //    isButtonPressed = true;
+    //}
 
-    public void OnPointerUp(/*PointerEventData eventData*/)
-    {
-        isButtonPressed = false;
-    }
-    
-    public void Tekito()
-    {
-
-    }
+    //public void OnPointerUp(/*PointerEventData eventData*/)
+    //{
+    //    isButtonPressed = false;
+    //}
    
 }
