@@ -17,8 +17,8 @@ public class MtPlungerController : MonoBehaviour
 
     [SerializeField] AudioSource PlungerSound;
 
-    [SerializeField] Button plungerButton;
-    private bool isButtonPressed = false;
+     bool plungerButtonDownFlag = false;
+    //private bool isButtonPressed = false;
 
 
     void Start()
@@ -41,7 +41,7 @@ public class MtPlungerController : MonoBehaviour
             Debug.LogError("Don't Take care!");
         }
 
-        plungerButton.onClick.AddListener(() => isButtonPressed = true);
+        //plungerButton.onClick.AddListener(() => isButtonPressed = true);
 
     }
 
@@ -50,7 +50,7 @@ public class MtPlungerController : MonoBehaviour
         if (MtGameManager.gameState != "playing") return;
 
 
-        if (Input.GetKey(launchKey) || isButtonPressed)
+        if (Input.GetKey(launchKey) || plungerButtonDownFlag)
         {
             // スペースキーを押している間、プランジャーを引く
             isPulling = true;
@@ -68,6 +68,12 @@ public class MtPlungerController : MonoBehaviour
             // キーを離したら発射
             isPulling = false;
             Release();
+        }
+
+        if (plungerButtonDownFlag)
+        {
+            // ボタンが押しっぱなしの状態の時にのみ「Hold」を表示する。
+            Debug.Log("Hold");
         }
 
     }
@@ -124,5 +130,16 @@ public class MtPlungerController : MonoBehaviour
         }
     }
 
+    public void OnPlungerButtonDown()
+    {
+        Debug.Log("Down");
+        plungerButtonDownFlag = true;
+    }
+    // ボタンを離したときの処理
+    public void OnPlungerButtonUp()
+    {
+        Debug.Log("Up");
+        plungerButtonDownFlag = false;
+    }
 
 }
